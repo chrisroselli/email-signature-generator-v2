@@ -26,7 +26,7 @@ export default function SignatureGenerator() {
     showOfficePhone: false,
     showMobilePhone: false,
     showDisclaimer: false,
-    textColor: '#47403d',
+    textColor: '#000000',
     socialMedia: {
       x: '',
       facebook: '',
@@ -207,7 +207,7 @@ export default function SignatureGenerator() {
 
     // If not valid, reset to the default color
     if (!isValid) {
-      setFormData(prev => ({ ...prev, textColor: '#47403d' }));
+      setFormData(prev => ({ ...prev, textColor: '#000000' }));
     }
   };
 
@@ -234,12 +234,12 @@ export default function SignatureGenerator() {
     }
 
     // Default fallback
-    return '#47403d';
+    return '#000000';
   };
 
   // Get a valid color for the signature preview
   const getSignatureColor = () => {
-    return isColorValid ? formData.textColor : '#47403d';
+    return isColorValid ? formData.textColor : '#000000';
   };
 
   const resetSignatureDetails = () => {
@@ -248,7 +248,7 @@ export default function SignatureGenerator() {
       fullName: '',
       jobTitle: '',
       email: '',
-      textColor: '#47403d',
+      textColor: '#000000',
       officePhone: '',
       mobilePhone: '',
       showOfficePhone: false,
@@ -261,7 +261,22 @@ export default function SignatureGenerator() {
     setFormData(prev => ({
       ...prev,
       companyLogo: '/placeholder.svg?height=60&width=180',
+      textColor: '#000000',
       website: '',
+      socialMedia: {
+        x: '',
+        facebook: '',
+        instagram: '',
+        google: '',
+        youtube: '',
+      },
+      enabledSocial: {
+        x: false,
+        facebook: false,
+        instagram: false,
+        google: false,
+        youtube: false,
+      },
     }));
   };
 
