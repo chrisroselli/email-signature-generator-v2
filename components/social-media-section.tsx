@@ -1,33 +1,33 @@
-"use client"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
+'use client';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 
 interface SocialMediaSectionProps {
   socialMedia: {
-    x: string
-    facebook: string
-    instagram: string
-    google: string
-    youtube: string
-  }
+    x: string;
+    facebook: string;
+    instagram: string;
+    google: string;
+    youtube: string;
+  };
   enabledSocial: {
-    x: boolean
-    facebook: boolean
-    instagram: boolean
-    google: boolean
-    youtube: boolean
-  }
+    x: boolean;
+    facebook: boolean;
+    instagram: boolean;
+    google: boolean;
+    youtube: boolean;
+  };
   icons: {
-    x: string
-    facebook: string
-    instagram: string
-    google: string
-    youtube: string
-  }
-  onSocialMediaChange: (platform: string, value: string) => void
-  onToggleSocialMedia: (platform: string) => void
-  onIconChange: (platform: string, iconUrl: string) => void
+    x: string;
+    facebook: string;
+    instagram: string;
+    google: string;
+    youtube: string;
+  };
+  onSocialMediaChange: (platform: string, value: string) => void;
+  onToggleSocialMedia: (platform: string) => void;
+  onIconChange: (platform: string, iconUrl: string) => void;
 }
 
 export default function SocialMediaSection({
@@ -39,16 +39,16 @@ export default function SocialMediaSection({
   onIconChange,
 }: SocialMediaSectionProps) {
   const platforms = [
-    { id: "x", name: "X (Twitter)" },
-    { id: "facebook", name: "Facebook" },
-    { id: "instagram", name: "Instagram" },
-    { id: "google", name: "Google" },
-    { id: "youtube", name: "YouTube" },
-  ]
+    { id: 'x', name: 'X (Twitter)' },
+    { id: 'facebook', name: 'Facebook' },
+    { id: 'instagram', name: 'Instagram' },
+    { id: 'google', name: 'Google' },
+    { id: 'youtube', name: 'YouTube' },
+  ];
 
   return (
     <div className="space-y-4">
-      {platforms.map((platform) => (
+      {platforms.map(platform => (
         <div key={platform.id} className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -68,7 +68,7 @@ export default function SocialMediaSection({
             <Input
               id={platform.id}
               value={socialMedia[platform.id as keyof typeof socialMedia]}
-              onChange={(e) => onSocialMediaChange(platform.id, e.target.value)}
+              onChange={e => onSocialMediaChange(platform.id, e.target.value)}
               placeholder={`${platform.name} profile URL`}
               className="border-[#47403d]/20 focus-visible:ring-primary"
             />
@@ -76,6 +76,5 @@ export default function SocialMediaSection({
         </div>
       ))}
     </div>
-  )
+  );
 }
-

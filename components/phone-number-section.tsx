@@ -1,18 +1,18 @@
-"use client"
+'use client';
 
-import type React from "react"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
+import type React from 'react';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Checkbox } from '@/components/ui/checkbox';
 
 interface PhoneNumberSectionProps {
-  officePhone: string
-  mobilePhone: string
-  showOfficePhone: boolean
-  showMobilePhone: boolean
-  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  onCheckboxChange: (name: string, checked: boolean) => void
-  onPhoneChange: (name: string, value: string) => void
+  officePhone: string;
+  mobilePhone: string;
+  showOfficePhone: boolean;
+  showMobilePhone: boolean;
+  onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onCheckboxChange: (name: string, checked: boolean) => void;
+  onPhoneChange: (name: string, value: string) => void;
 }
 
 export default function PhoneNumberSection({
@@ -27,32 +27,32 @@ export default function PhoneNumberSection({
   // Format phone number as (555) 555-5555
   const formatPhoneNumber = (value: string): string => {
     // Remove all non-numeric characters
-    const cleaned = value.replace(/\D/g, "")
+    const cleaned = value.replace(/\D/g, '');
 
     // Format the number based on length
     if (cleaned.length === 0) {
-      return ""
+      return '';
     } else if (cleaned.length <= 3) {
-      return `(${cleaned}`
+      return `(${cleaned}`;
     } else if (cleaned.length <= 6) {
-      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3)}`
+      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3)}`;
     } else {
-      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6, 10)}`
+      return `(${cleaned.slice(0, 3)}) ${cleaned.slice(3, 6)}-${cleaned.slice(6, 10)}`;
     }
-  }
+  };
 
   // Handle phone number input
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
 
     // Only allow digits, parentheses, spaces, and hyphens
-    const sanitizedValue = value.replace(/[^\d\s()-]/g, "")
+    const sanitizedValue = value.replace(/[^\d\s()-]/g, '');
 
-    const formattedValue = formatPhoneNumber(sanitizedValue)
+    const formattedValue = formatPhoneNumber(sanitizedValue);
 
     // Update the input value with the formatted version
-    onPhoneChange(name, formattedValue)
-  }
+    onPhoneChange(name, formattedValue);
+  };
 
   // Handle keydown to prevent non-digit characters
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -65,14 +65,14 @@ export default function PhoneNumberSection({
       (e.keyCode === 86 && e.ctrlKey === true) ||
       (e.keyCode === 88 && e.ctrlKey === true)
     ) {
-      return
+      return;
     }
 
     // Ensure that it is a number or prevent the keypress
     if ((e.shiftKey || e.keyCode < 48 || e.keyCode > 57) && (e.keyCode < 96 || e.keyCode > 105)) {
-      e.preventDefault()
+      e.preventDefault();
     }
-  }
+  };
 
   return (
     <div className="space-y-4">
@@ -83,12 +83,12 @@ export default function PhoneNumberSection({
       `}</style>
 
       <div className="space-y-2">
-        <div className="flex items-center space-x-2 mb-2">
+        <div className="mb-2 flex items-center space-x-2">
           <Checkbox
             id="showOfficePhone"
             checked={showOfficePhone}
-            onCheckedChange={(checked) => onCheckboxChange("showOfficePhone", checked as boolean)}
-            className="border-[#47403d]/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+            onCheckedChange={checked => onCheckboxChange('showOfficePhone', checked as boolean)}
+            className="border-[#47403d]/30 data-[state=checked]:border-primary data-[state=checked]:bg-primary"
           />
           <Label htmlFor="showOfficePhone" className="cursor-pointer text-[#47403d]">
             Office Phone Number
@@ -108,12 +108,12 @@ export default function PhoneNumberSection({
       </div>
 
       <div className="space-y-2">
-        <div className="flex items-center space-x-2 mb-2">
+        <div className="mb-2 flex items-center space-x-2">
           <Checkbox
             id="showMobilePhone"
             checked={showMobilePhone}
-            onCheckedChange={(checked) => onCheckboxChange("showMobilePhone", checked as boolean)}
-            className="border-[#47403d]/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+            onCheckedChange={checked => onCheckboxChange('showMobilePhone', checked as boolean)}
+            className="border-[#47403d]/30 data-[state=checked]:border-primary data-[state=checked]:bg-primary"
           />
           <Label htmlFor="showMobilePhone" className="cursor-pointer text-[#47403d]">
             Mobile Phone Number
@@ -132,6 +132,5 @@ export default function PhoneNumberSection({
         />
       </div>
     </div>
-  )
+  );
 }
-
