@@ -11,12 +11,14 @@ interface SocialMediaPreviewProps {
     facebook: string
     instagram: string
     google: string
+    youtube: string
   }
   enabledSocial: {
     x: boolean
     facebook: boolean
     instagram: boolean
     google: boolean
+    youtube: boolean
   }
 }
 
@@ -28,6 +30,7 @@ export default function SocialMediaPreview({ icons, enabledSocial }: SocialMedia
     { id: "facebook", name: "Facebook" },
     { id: "instagram", name: "Instagram" },
     { id: "google", name: "Google" },
+    { id: "youtube", name: "YouTube" },
   ]
 
   return (

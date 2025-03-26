@@ -34,6 +34,11 @@ const defaultIcons = {
     "https://cdn-icons-png.flaticon.com/512/300/300221.png",
     "https://cdn-icons-png.flaticon.com/512/2875/2875404.png",
   ],
+  youtube: [
+    "https://cdn-icons-png.flaticon.com/512/1384/1384060.png",
+    "https://cdn-icons-png.flaticon.com/512/1384/1384066.png",
+    "https://cdn-icons-png.flaticon.com/512/1384/1384069.png",
+  ],
 }
 
 export default function SocialIconSelector({ platform, onSelect }: SocialIconSelectorProps) {

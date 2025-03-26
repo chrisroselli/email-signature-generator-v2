@@ -9,18 +9,21 @@ interface SocialMediaSectionProps {
     facebook: string
     instagram: string
     google: string
+    youtube: string
   }
   enabledSocial: {
     x: boolean
     facebook: boolean
     instagram: boolean
     google: boolean
+    youtube: boolean
   }
   icons: {
     x: string
     facebook: string
     instagram: string
     google: string
+    youtube: string
   }
   onSocialMediaChange: (platform: string, value: string) => void
   onToggleSocialMedia: (platform: string) => void
@@ -40,6 +43,7 @@ export default function SocialMediaSection({
     { id: "facebook", name: "Facebook" },
     { id: "instagram", name: "Instagram" },
     { id: "google", name: "Google" },
+    { id: "youtube", name: "YouTube" },
   ]
 
   return (

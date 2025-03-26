@@ -32,12 +32,14 @@ export default function SignatureGenerator() {
       facebook: "",
       instagram: "",
       google: "",
+      youtube: "",
     },
     enabledSocial: {
       x: false,
       facebook: false,
       instagram: false,
       google: false,
+      youtube: false,
     },
   })
 
@@ -51,6 +53,7 @@ export default function SignatureGenerator() {
     facebook: "",
     instagram: "",
     google: "",
+    youtube: "",
   })
 
   // Load social icons on client side only
@@ -60,6 +63,7 @@ export default function SignatureGenerator() {
       facebook: "https://cdn-icons-png.flaticon.com/512/174/174848.png",
       instagram: "https://cdn-icons-png.flaticon.com/512/2111/2111463.png",
       google: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png",
+      youtube: "https://cdn-icons-png.flaticon.com/512/1384/1384060.png",
     })
   }, [])
 
@@ -247,12 +251,14 @@ export default function SignatureGenerator() {
         facebook: "",
         instagram: "",
         google: "",
+        youtube: "",
       },
       enabledSocial: {
         x: false,
         facebook: false,
         instagram: false,
         google: false,
+        youtube: false,
       },
     })
   }

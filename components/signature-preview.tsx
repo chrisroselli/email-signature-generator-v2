@@ -16,12 +16,14 @@ interface SignaturePreviewProps {
       facebook: string
       instagram: string
       google: string
+      youtube: string
     }
     enabledSocial: {
       x: boolean
       facebook: boolean
       instagram: boolean
       google: boolean
+      youtube: boolean
     }
   }
   icons: {
@@ -29,6 +31,7 @@ interface SignaturePreviewProps {
     facebook: string
     instagram: string
     google: string
+    youtube: string
   }
 }
 
@@ -275,11 +278,24 @@ export default function SignaturePreview({ data, icons }: SignaturePreviewProps)
                               </td>
                             )}
                             {enabledSocial.google && socialMedia.google && (
-                              <td style={{ padding: "0" }}>
+                              <td style={{ padding: "0 8px 0 0" }}>
                                 <a href={socialMedia.google} target="_blank" rel="noreferrer">
                                   <img
                                     src={icons.google || "/placeholder.svg"}
                                     alt="Google"
+                                    width="20"
+                                    height="20"
+                                    style={{ display: "block", border: "0" }}
+                                  />
+                                </a>
+                              </td>
+                            )}
+                            {enabledSocial.youtube && socialMedia.youtube && (
+                              <td style={{ padding: "0" }}>
+                                <a href={socialMedia.youtube} target="_blank" rel="noreferrer">
+                                  <img
+                                    src={icons.youtube || "/placeholder.svg"}
+                                    alt="YouTube"
                                     width="20"
                                     height="20"
                                     style={{ display: "block", border: "0" }}
