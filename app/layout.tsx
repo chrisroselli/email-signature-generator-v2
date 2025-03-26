@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: 'Treehouse Email Signature Generator',
   description: 'Create professional email signatures for Microsoft Outlook',
   generator: 'v0.dev',
+  icons: {
+    icon: 'https://cdn.treehouseinternetgroup.com/cms_images/687/th-mkg-favicon.ico',
+  },
 };
 
 export default function RootLayout({

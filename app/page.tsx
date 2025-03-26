@@ -8,14 +8,11 @@ export default function Home() {
           <img
             src="https://cdn.treehouseinternetgroup.com/cms_core/images/branding/th/th-marketing-logo-2021.svg"
             alt="Treehouse Internet Group"
-            className="h-12 w-auto"
+            className="h-16 w-auto"
           />
         </div>
         <div className="text-center">
-          <h1 className="mb-2 text-3xl font-bold text-[#47403d]">Email Signature Generator</h1>
-          <p className="text-[#47403d]/70">
-            Create a professional email signature for Microsoft Outlook
-          </p>
+          <h1 className="mb-2 text-3xl text-[#47403d]">Email Signature Generator</h1>
         </div>
       </div>
       <SignatureGenerator />
