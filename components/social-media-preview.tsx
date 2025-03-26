@@ -33,12 +33,12 @@ export default function SocialMediaPreview({ icons, enabledSocial }: SocialMedia
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="mt-2 border-[#47403d]/20 hover:bg-[#6FAC43]/10 text-[#47403d]">
+        <Button variant="outline" size="sm" className="mt-2 border-[#47403d]/20 hover:bg-primary/10 text-[#47403d]">
           <Eye className="h-4 w-4 mr-2" />
           Preview Icons
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md border-[#6FAC43]/20">
+      <DialogContent className="sm:max-w-md border-primary/20">
         <DialogHeader>
           <DialogTitle className="text-[#47403d]">Social Media Icons Preview</DialogTitle>
         </DialogHeader>

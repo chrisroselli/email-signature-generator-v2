@@ -41,7 +41,6 @@ export default function SignatureGenerator() {
     },
   })
 
-  const [copied, setCopied] = useState(false)
   const [activeTab, setActiveTab] = useState("edit")
   const [isColorValid, setIsColorValid] = useState(true)
   const [colorError, setColorError] = useState("")
@@ -214,47 +213,6 @@ export default function SignatureGenerator() {
     }
   }
 
-  const copyToClipboard = async () => {
-    const signatureElement = document.getElementById("signature-preview")
-
-    if (signatureElement) {
-      try {
-        // Create a temporary container to clean up the HTML for Outlook
-        const tempContainer = document.createElement("div")
-        tempContainer.innerHTML = signatureElement.outerHTML
-
-        // Remove any ID attributes that might cause issues in Outlook
-        const elementsWithId = tempContainer.querySelectorAll("[id]")
-        elementsWithId.forEach((el) => el.removeAttribute("id"))
-
-        // Get the cleaned HTML
-        const cleanedHTML = tempContainer.innerHTML
-
-        // For modern browsers
-        if (navigator.clipboard) {
-          await navigator.clipboard.writeText(cleanedHTML)
-        } else {
-          // Fallback
-          const range = document.createRange()
-          const tempEl = document.createElement("div")
-          document.body.appendChild(tempEl)
-          tempEl.innerHTML = cleanedHTML
-          range.selectNode(tempEl)
-          window.getSelection()?.removeAllRanges()
-          window.getSelection()?.addRange(range)
-          document.execCommand("copy")
-          window.getSelection()?.removeAllRanges()
-          document.body.removeChild(tempEl)
-        }
-
-        setCopied(true)
-        setTimeout(() => setCopied(false), 2000)
-      } catch (err) {
-        console.error("Failed to copy: ", err)
-      }
-    }
-  }
-
   // Function to get a valid color for display
   const getValidColor = (color: string) => {
     // If it's a valid hex color with exactly 6 characters, return it
@@ -271,11 +229,49 @@ export default function SignatureGenerator() {
     return isColorValid ? formData.textColor : "#47403d"
   }
 
+  const resetForm = () => {
+    setFormData({
+      fullName: "",
+      jobTitle: "",
+      officePhone: "",
+      mobilePhone: "",
+      email: "",
+      website: "",
+      companyLogo: "/placeholder.svg?height=60&width=180",
+      showOfficePhone: false,
+      showMobilePhone: false,
+      showDisclaimer: false,
+      textColor: "#47403d",
+      socialMedia: {
+        x: "",
+        facebook: "",
+        instagram: "",
+        google: "",
+      },
+      enabledSocial: {
+        x: false,
+        facebook: false,
+        instagram: false,
+        google: false,
+      },
+    })
+  }
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <Card className="border-[#6FAC43]/20 shadow-sm">
+      <Card className="border-primary/20 shadow-sm">
         <CardContent className="pt-6">
-          <h2 className="text-xl font-semibold mb-4 text-[#47403d]">Signature Details</h2>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-xl font-semibold text-[#47403d]">Signature Details</h2>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={resetForm}
+              className="text-white bg-primary border-[#47403d]/20 hover:bg-red-700 hover:text-white"
+            >
+              Reset
+            </Button>
+          </div>
           <div className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="fullName" className="text-[#47403d]">
@@ -287,7 +283,7 @@ export default function SignatureGenerator() {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 onKeyDown={handleAlphabeticKeyDown}
-                className="border-[#47403d]/20 focus-visible:ring-[#6FAC43]"
+                className="border-[#47403d]/20 focus-visible:ring-primary"
               />
             </div>
 
@@ -301,7 +297,7 @@ export default function SignatureGenerator() {
                 value={formData.jobTitle}
                 onChange={handleInputChange}
                 onKeyDown={handleAlphabeticKeyDown}
-                className="border-[#47403d]/20 focus-visible:ring-[#6FAC43]"
+                className="border-[#47403d]/20 focus-visible:ring-primary"
               />
             </div>
 
@@ -328,7 +324,7 @@ export default function SignatureGenerator() {
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="border-[#47403d]/20 focus-visible:ring-[#6FAC43]"
+                className="border-[#47403d]/20 focus-visible:ring-primary"
               />
             </div>
 
@@ -341,7 +337,7 @@ export default function SignatureGenerator() {
                 name="website"
                 value={formData.website}
                 onChange={handleInputChange}
-                className="border-[#47403d]/20 focus-visible:ring-[#6FAC43]"
+                className="border-[#47403d]/20 focus-visible:ring-primary"
               />
             </div>
 
@@ -370,7 +366,7 @@ export default function SignatureGenerator() {
                   maxLength={7}
                   className={`${
                     isColorValid
-                      ? "border-[#47403d]/20 focus-visible:ring-[#6FAC43]"
+                      ? "border-[#47403d]/20 focus-visible:ring-primary"
                       : "border-red-500 focus-visible:ring-red-500"
                   }`}
                   aria-invalid={!isColorValid}
@@ -401,7 +397,7 @@ export default function SignatureGenerator() {
               <div className="flex items-center gap-2">
                 <Button
                   variant="outline"
-                  className="w-full border-[#47403d]/20 hover:bg-[#6FAC43]/10 text-[#47403d]"
+                  className="w-full border-[#47403d]/20 hover:bg-primary/10 text-[#47403d]"
                   onClick={() => document.getElementById("logo-upload")?.click()}
                 >
                   <Upload className="h-4 w-4 mr-2" />
@@ -417,7 +413,7 @@ export default function SignatureGenerator() {
                 id="showDisclaimer"
                 checked={formData.showDisclaimer}
                 onCheckedChange={(checked) => handleCheckboxChange("showDisclaimer", checked as boolean)}
-                className="border-[#47403d]/30 data-[state=checked]:bg-[#6FAC43] data-[state=checked]:border-[#6FAC43]"
+                className="border-[#47403d]/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
               />
               <Label htmlFor="showDisclaimer" className="cursor-pointer text-[#47403d]">
                 Include Confidentiality Disclaimer
@@ -430,40 +426,22 @@ export default function SignatureGenerator() {
       <div className="flex flex-col lg:sticky lg:top-4 self-start">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-2 bg-[#47403d]/10">
-            <TabsTrigger value="edit" className="data-[state=active]:bg-[#6FAC43] data-[state=active]:text-white">
+            <TabsTrigger value="edit" className="data-[state=active]:bg-primary data-[state=active]:text-white">
               Preview
             </TabsTrigger>
             <TabsTrigger
               value="instructions"
-              className="data-[state=active]:bg-[#6FAC43] data-[state=active]:text-white"
+              className="data-[state=active]:bg-primary data-[state=active]:text-white"
             >
               How to Use
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="edit" className="mt-0">
-            <Card className="border-[#6FAC43]/20 shadow-sm">
+            <Card className="border-primary/20 shadow-sm">
               <CardContent className="pt-6">
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-xl font-semibold text-[#47403d]">Signature Preview</h2>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={copyToClipboard}
-                    className="flex items-center gap-1 border-[#47403d]/20 hover:bg-[#6FAC43]/10 text-[#47403d]"
-                  >
-                    {copied ? (
-                      <>
-                        <Check className="h-4 w-4" />
-                        Copied!
-                      </>
-                    ) : (
-                      <>
-                        <Clipboard className="h-4 w-4" />
-                        Copy HTML
-                      </>
-                    )}
-                  </Button>
                 </div>
 
                 <div className="border rounded-md p-4 bg-white border-[#47403d]/20">
@@ -474,7 +452,7 @@ export default function SignatureGenerator() {
           </TabsContent>
 
           <TabsContent value="instructions" className="mt-0">
-            <Card className="border-[#6FAC43]/20 shadow-sm">
+            <Card className="border-primary/20 shadow-sm">
               <CardContent className="pt-6">
                 <h2 className="text-xl font-semibold mb-4 text-[#47403d]">How to Add to Outlook</h2>
                 <ol className="list-decimal pl-5 space-y-2 text-[#47403d]">

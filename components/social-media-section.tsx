@@ -52,7 +52,7 @@ export default function SocialMediaSection({
                 id={`${platform.id}-toggle`}
                 checked={enabledSocial[platform.id as keyof typeof enabledSocial]}
                 onCheckedChange={() => onToggleSocialMedia(platform.id)}
-                className="data-[state=checked]:bg-[#6FAC43]"
+                className="data-[state=checked]:bg-primary"
               />
               <Label htmlFor={`${platform.id}-toggle`} className="cursor-pointer text-[#47403d]">
                 {platform.name}
@@ -66,7 +66,7 @@ export default function SocialMediaSection({
               value={socialMedia[platform.id as keyof typeof socialMedia]}
               onChange={(e) => onSocialMediaChange(platform.id, e.target.value)}
               placeholder={`${platform.name} profile URL`}
-              className="border-[#47403d]/20 focus-visible:ring-[#6FAC43]"
+              className="border-[#47403d]/20 focus-visible:ring-primary"
             />
           )}
         </div>

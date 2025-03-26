@@ -64,21 +64,21 @@ export default function SocialIconSelector({ platform, onSelect }: SocialIconSel
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" size="sm" className="border-[#47403d]/20 hover:bg-[#6FAC43]/10 text-[#47403d]">
+        <Button variant="outline" size="sm" className="border-[#47403d]/20 hover:bg-primary/10 text-[#47403d]">
           Change Icon
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md border-[#6FAC43]/20">
+      <DialogContent className="sm:max-w-md border-primary/20">
         <DialogHeader>
           <DialogTitle className="text-[#47403d]">Select {platform} Icon</DialogTitle>
         </DialogHeader>
 
         <Tabs defaultValue="default" value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="grid w-full grid-cols-2 bg-[#47403d]/10">
-            <TabsTrigger value="default" className="data-[state=active]:bg-[#6FAC43] data-[state=active]:text-white">
+            <TabsTrigger value="default" className="data-[state=active]:bg-primary data-[state=active]:text-white">
               Default Icons
             </TabsTrigger>
-            <TabsTrigger value="custom" className="data-[state=active]:bg-[#6FAC43] data-[state=active]:text-white">
+            <TabsTrigger value="custom" className="data-[state=active]:bg-primary data-[state=active]:text-white">
               Upload Custom
             </TabsTrigger>
           </TabsList>
@@ -88,7 +88,7 @@ export default function SocialIconSelector({ platform, onSelect }: SocialIconSel
               {defaultIcons[platform as keyof typeof defaultIcons]?.map((icon, index) => (
                 <div
                   key={index}
-                  className="border rounded-md p-4 flex items-center justify-center cursor-pointer hover:bg-[#6FAC43]/10 border-[#47403d]/20"
+                  className="border rounded-md p-4 flex items-center justify-center cursor-pointer hover:bg-primary/10 border-[#47403d]/20"
                   onClick={() => handleIconSelect(icon)}
                 >
                   <img src={icon || "/placeholder.svg"} alt={`${platform} icon ${index + 1}`} width="32" height="32" />
@@ -105,7 +105,7 @@ export default function SocialIconSelector({ platform, onSelect }: SocialIconSel
               <Button
                 variant="outline"
                 onClick={() => document.getElementById("custom-icon-upload")?.click()}
-                className="border-[#47403d]/20 hover:bg-[#6FAC43]/10 text-[#47403d]"
+                className="border-[#47403d]/20 hover:bg-primary/10 text-[#47403d]"
               >
                 Select File
               </Button>

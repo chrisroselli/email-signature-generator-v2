@@ -88,7 +88,7 @@ export default function PhoneNumberSection({
             id="showOfficePhone"
             checked={showOfficePhone}
             onCheckedChange={(checked) => onCheckboxChange("showOfficePhone", checked as boolean)}
-            className="border-[#47403d]/30 data-[state=checked]:bg-[#6FAC43] data-[state=checked]:border-[#6FAC43]"
+            className="border-[#47403d]/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
           />
           <Label htmlFor="showOfficePhone" className="cursor-pointer text-[#47403d]">
             Office Phone Number
@@ -102,7 +102,7 @@ export default function PhoneNumberSection({
           onKeyDown={handleKeyDown}
           placeholder="(555) 123-4567"
           disabled={!showOfficePhone}
-          className="phone-input border-[#47403d]/20 focus-visible:ring-[#6FAC43] disabled:opacity-50"
+          className="phone-input border-[#47403d]/20 focus-visible:ring-primary disabled:opacity-50"
           aria-label="Office Phone Number"
         />
       </div>
@@ -113,7 +113,7 @@ export default function PhoneNumberSection({
             id="showMobilePhone"
             checked={showMobilePhone}
             onCheckedChange={(checked) => onCheckboxChange("showMobilePhone", checked as boolean)}
-            className="border-[#47403d]/30 data-[state=checked]:bg-[#6FAC43] data-[state=checked]:border-[#6FAC43]"
+            className="border-[#47403d]/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
           />
           <Label htmlFor="showMobilePhone" className="cursor-pointer text-[#47403d]">
             Mobile Phone Number
@@ -127,7 +127,7 @@ export default function PhoneNumberSection({
           onKeyDown={handleKeyDown}
           placeholder="(555) 987-6543"
           disabled={!showMobilePhone}
-          className="phone-input border-[#47403d]/20 focus-visible:ring-[#6FAC43] disabled:opacity-50"
+          className="phone-input border-[#47403d]/20 focus-visible:ring-primary disabled:opacity-50"
           aria-label="Mobile Phone Number"
         />
       </div>
