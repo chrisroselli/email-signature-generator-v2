@@ -72,128 +72,145 @@ export default function SignaturePreview({ data, icons }: SignaturePreviewProps)
     >
       {/* Main signature table - Outlook-friendly structure */}
       <table
-        cellPadding="0"
-        cellSpacing="0"
-        border="0"
-        style={{ borderCollapse: "collapse", width: "100%", maxWidth: "550px" }}
+        cellPadding={0}
+        cellSpacing={0}
+        border={0}
+        style={{
+          borderCollapse: "collapse",
+          width: "100%",
+          maxWidth: "550px",
+          border: "none",
+          borderSpacing: "0",
+          borderWidth: "0",
+          margin: "0",
+          padding: "0",
+          outline: "none"
+        }}
       >
-        <tbody>
-          <tr>
+        <tbody style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
+          <tr style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
             {/* Logo cell - fixed width for Outlook */}
-            <td width="150" valign="middle" style={{ padding: "0 15px 0 0" }}>
+            <td width="150" valign="middle" style={{ padding: "0 15px 0 0", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
               {companyLogo.startsWith("/placeholder") ? (
                 <img
                   src={companyLogo || "/placeholder.svg"}
                   alt="Company Logo"
-                  width="150"
-                  height="50"
-                  style={{ display: "block", maxWidth: "150px", height: "auto", border: "0" }}
+                  width="auto"
+                  height="150"
+                  style={{ display: "block", border: "0", margin: "0", padding: "0", outline: "none" }}
                 />
               ) : (
                 <img
                   src={companyLogo || "/placeholder.svg"}
                   alt="Company Logo"
-                  width="150"
-                  height="50"
-                  style={{ display: "block", maxWidth: "150px", height: "auto", border: "0" }}
+                  width="auto"
+                  height="150"
+                  style={{ display: "block", border: "0", margin: "0", padding: "0", outline: "none" }}
                 />
               )}
             </td>
 
             {/* Vertical divider - using border-left in a separate cell for Outlook */}
-            <td width="2" style={{ width: "2px", backgroundColor: dividerColor, padding: "0" }}>
+            <td width="2" style={{ width: "2px", backgroundColor: dividerColor, padding: "0", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
               &nbsp;
             </td>
 
             {/* Content cell */}
-            <td valign="top" style={{ padding: "0 0 0 15px" }}>
-              <table cellPadding="0" cellSpacing="0" border="0" style={{ borderCollapse: "collapse" }}>
-                <tbody>
-                  <tr>
-                    <td style={{ padding: "0 0 4px 0" }}>
-                      <span
+            <td valign="top" style={{ padding: "0 0 0 15px", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
+              <table cellPadding={0} cellSpacing={0} border={0} style={{
+                borderCollapse: "collapse",
+                border: "none",
+                borderSpacing: "0",
+                borderWidth: "0",
+                margin: "0",
+                padding: "0",
+                outline: "none"
+              }}>
+                <tbody style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
+                  <tr style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
+                    <td style={{ padding: "0 0 4px 0", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
+                      <div
                         style={{
                           fontFamily: "Arial, sans-serif",
                           fontSize: "16px",
                           fontWeight: "bold",
                           color: safeTextColor,
+                          outline: "none",
+                          border: "none",
+                          margin: "0",
+                          padding: "0"
                         }}
                       >
                         {fullName}
-                      </span>
+                      </div>
                     </td>
                   </tr>
 
                   {jobTitle && (
-                    <tr>
-                      <td style={{ padding: "0 0 8px 0" }}>
-                        <span style={{ fontFamily: "Arial, sans-serif", fontSize: "12px", color: defaultTextColor }}>
+                    <tr style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
+                      <td style={{ padding: "0 0 8px 0", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
+                        <div style={{ fontFamily: "Arial, sans-serif", fontSize: "12px", color: defaultTextColor, outline: "none" }}>
                           {jobTitle}
-                        </span>
+                        </div>
                       </td>
                     </tr>
                   )}
 
                   {showOfficePhone && officePhone && (
-                    <tr>
-                      <td style={{ padding: "0 0 4px 0" }}>
-                        <span
-                          style={{
-                            fontFamily: "Arial, sans-serif",
-                            fontSize: "12px",
-                            fontWeight: "bold",
-                            color: safeTextColor,
-                          }}
-                        >
-                          Office:{" "}
-                        </span>
-                        <span style={{ fontFamily: "Arial, sans-serif", fontSize: "12px", color: defaultTextColor }}>
-                          {officePhone}
-                        </span>
+                    <tr style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
+                      <td style={{ 
+                        padding: "0 0 4px 0", 
+                        border: "none", 
+                        borderWidth: "0", 
+                        margin: "0", 
+                        outline: "none",
+                        fontFamily: "Arial, sans-serif",
+                        fontSize: "12px"
+                      }}>
+                        <strong style={{ color: safeTextColor, outline: "none", border: "none", margin: "0", padding: "0" }}>Office: </strong>
+                        {officePhone}
                       </td>
                     </tr>
                   )}
 
                   {showMobilePhone && mobilePhone && (
-                    <tr>
-                      <td style={{ padding: "0 0 4px 0" }}>
-                        <span
-                          style={{
-                            fontFamily: "Arial, sans-serif",
-                            fontSize: "12px",
-                            fontWeight: "bold",
-                            color: safeTextColor,
-                          }}
-                        >
-                          Mobile:{" "}
-                        </span>
-                        <span style={{ fontFamily: "Arial, sans-serif", fontSize: "12px", color: defaultTextColor }}>
-                          {mobilePhone}
-                        </span>
+                    <tr style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
+                      <td style={{ 
+                        padding: "0 0 4px 0", 
+                        border: "none", 
+                        borderWidth: "0", 
+                        margin: "0", 
+                        outline: "none",
+                        fontFamily: "Arial, sans-serif",
+                        fontSize: "12px"
+                      }}>
+                        <strong style={{ color: safeTextColor, outline: "none", border: "none", margin: "0", padding: "0" }}>Mobile: </strong>
+                        {mobilePhone}
                       </td>
                     </tr>
                   )}
 
                   {email && (
-                    <tr>
-                      <td style={{ padding: "0 0 4px 0" }}>
-                        <span
-                          style={{
-                            fontFamily: "Arial, sans-serif",
-                            fontSize: "12px",
-                            fontWeight: "bold",
-                            color: safeTextColor,
-                          }}
-                        >
-                          Email:{" "}
-                        </span>
+                    <tr style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
+                      <td style={{ 
+                        padding: "0 0 4px 0", 
+                        border: "none", 
+                        borderWidth: "0", 
+                        margin: "0", 
+                        outline: "none",
+                        fontFamily: "Arial, sans-serif",
+                        fontSize: "12px"
+                      }}>
+                        <strong style={{ color: safeTextColor, outline: "none", border: "none", margin: "0", padding: "0" }}>Email: </strong>
                         <a
                           href={`mailto:${email}`}
                           style={{
-                            fontFamily: "Arial, sans-serif",
-                            fontSize: "12px",
                             color: defaultTextColor,
                             textDecoration: "none",
+                            outline: "none",
+                            border: "none",
+                            margin: "0",
+                            padding: "0"
                           }}
                         >
                           {email}
@@ -203,25 +220,26 @@ export default function SignaturePreview({ data, icons }: SignaturePreviewProps)
                   )}
 
                   {website && (
-                    <tr>
-                      <td style={{ padding: "0 0 4px 0" }}>
-                        <span
-                          style={{
-                            fontFamily: "Arial, sans-serif",
-                            fontSize: "12px",
-                            fontWeight: "bold",
-                            color: safeTextColor,
-                          }}
-                        >
-                          Web:{" "}
-                        </span>
+                    <tr style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
+                      <td style={{ 
+                        padding: "0 0 4px 0", 
+                        border: "none", 
+                        borderWidth: "0", 
+                        margin: "0", 
+                        outline: "none",
+                        fontFamily: "Arial, sans-serif",
+                        fontSize: "12px"
+                      }}>
+                        <strong style={{ color: safeTextColor, outline: "none", border: "none", margin: "0", padding: "0" }}>Web: </strong>
                         <a
                           href={website.startsWith("http") ? website : `https://${website}`}
                           style={{
-                            fontFamily: "Arial, sans-serif",
-                            fontSize: "12px",
                             color: defaultTextColor,
                             textDecoration: "none",
+                            outline: "none",
+                            border: "none",
+                            margin: "0",
+                            padding: "0"
                           }}
                           target="_blank"
                           rel="noreferrer"
@@ -233,72 +251,80 @@ export default function SignaturePreview({ data, icons }: SignaturePreviewProps)
                   )}
 
                   {/* Social Media Icons */}
-                  <tr>
-                    <td style={{ padding: "10px 0 0 0" }}>
-                      <table cellPadding="0" cellSpacing="0" border="0" style={{ borderCollapse: "collapse" }}>
-                        <tbody>
-                          <tr>
+                  <tr style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
+                    <td style={{ padding: "10px 0 0 0", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
+                      <table cellPadding={0} cellSpacing={0} border={0} style={{
+                        borderCollapse: "collapse",
+                        border: "none",
+                        borderSpacing: "0",
+                        borderWidth: "0",
+                        margin: "0",
+                        padding: "0",
+                        outline: "none"
+                      }}>
+                        <tbody style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
+                          <tr style={{ border: "none", borderWidth: "0", margin: "0", padding: "0", outline: "none" }}>
                             {enabledSocial.x && socialMedia.x && (
-                              <td style={{ padding: "0 8px 0 0" }}>
-                                <a href={socialMedia.x} target="_blank" rel="noreferrer">
+                              <td style={{ padding: "0 8px 0 0", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
+                                <a href={socialMedia.x} target="_blank" rel="noreferrer" style={{ border: "none", margin: "0", padding: "0" }}>
                                   <img
                                     src={icons.x || "/placeholder.svg"}
                                     alt="X (Twitter)"
                                     width="20"
                                     height="20"
-                                    style={{ display: "block", border: "0" }}
+                                    style={{ display: "block", border: "0", margin: "0", padding: "0", outline: "none", border: "none" }}
                                   />
                                 </a>
                               </td>
                             )}
                             {enabledSocial.facebook && socialMedia.facebook && (
-                              <td style={{ padding: "0 8px 0 0" }}>
-                                <a href={socialMedia.facebook} target="_blank" rel="noreferrer">
+                              <td style={{ padding: "0 8px 0 0", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
+                                <a href={socialMedia.facebook} target="_blank" rel="noreferrer" style={{ border: "none", margin: "0", padding: "0" }}>
                                   <img
                                     src={icons.facebook || "/placeholder.svg"}
                                     alt="Facebook"
                                     width="20"
                                     height="20"
-                                    style={{ display: "block", border: "0" }}
+                                    style={{ display: "block", border: "0", margin: "0", padding: "0", outline: "none", border: "none" }}
                                   />
                                 </a>
                               </td>
                             )}
                             {enabledSocial.instagram && socialMedia.instagram && (
-                              <td style={{ padding: "0 8px 0 0" }}>
-                                <a href={socialMedia.instagram} target="_blank" rel="noreferrer">
+                              <td style={{ padding: "0 8px 0 0", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
+                                <a href={socialMedia.instagram} target="_blank" rel="noreferrer" style={{ border: "none", margin: "0", padding: "0" }}>
                                   <img
                                     src={icons.instagram || "/placeholder.svg"}
                                     alt="Instagram"
                                     width="20"
                                     height="20"
-                                    style={{ display: "block", border: "0" }}
+                                    style={{ display: "block", border: "0", margin: "0", padding: "0", outline: "none", border: "none" }}
                                   />
                                 </a>
                               </td>
                             )}
                             {enabledSocial.google && socialMedia.google && (
-                              <td style={{ padding: "0 8px 0 0" }}>
-                                <a href={socialMedia.google} target="_blank" rel="noreferrer">
+                              <td style={{ padding: "0 8px 0 0", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
+                                <a href={socialMedia.google} target="_blank" rel="noreferrer" style={{ border: "none", margin: "0", padding: "0" }}>
                                   <img
                                     src={icons.google || "/placeholder.svg"}
                                     alt="Google"
                                     width="20"
                                     height="20"
-                                    style={{ display: "block", border: "0" }}
+                                    style={{ display: "block", border: "0", margin: "0", padding: "0", outline: "none", border: "none" }}
                                   />
                                 </a>
                               </td>
                             )}
                             {enabledSocial.youtube && socialMedia.youtube && (
-                              <td style={{ padding: "0" }}>
-                                <a href={socialMedia.youtube} target="_blank" rel="noreferrer">
+                              <td style={{ padding: "0", border: "none", borderWidth: "0", margin: "0", outline: "none" }}>
+                                <a href={socialMedia.youtube} target="_blank" rel="noreferrer" style={{ border: "none", margin: "0", padding: "0" }}>
                                   <img
                                     src={icons.youtube || "/placeholder.svg"}
                                     alt="YouTube"
                                     width="20"
                                     height="20"
-                                    style={{ display: "block", border: "0" }}
+                                    style={{ display: "block", border: "0", margin: "0", padding: "0", outline: "none", border: "none" }}
                                   />
                                 </a>
                               </td>
@@ -318,20 +344,26 @@ export default function SignaturePreview({ data, icons }: SignaturePreviewProps)
       {/* Disclaimer section */}
       {showDisclaimer && (
         <table
-          cellPadding="0"
-          cellSpacing="0"
-          border="0"
+          cellPadding={0}
+          cellSpacing={0}
+          border={0}
           style={{
             borderCollapse: "collapse",
             width: "100%",
             maxWidth: "550px",
             marginTop: "15px",
             borderTop: `2px solid ${dividerColor}`,
+            border: "none",
+            borderLeft: "none",
+            borderRight: "none",
+            borderBottom: "none",
+            borderSpacing: "0",
+            borderWidth: "0"
           }}
         >
-          <tbody>
-            <tr>
-              <td style={{ paddingTop: "15px" }}>
+          <tbody style={{ border: "none" }}>
+            <tr style={{ border: "none" }}>
+              <td style={{ paddingTop: "15px", border: "none", borderWidth: "0" }}>
                 <p
                   style={{
                     fontFamily: "Arial, sans-serif",
@@ -340,6 +372,9 @@ export default function SignaturePreview({ data, icons }: SignaturePreviewProps)
                     margin: "0",
                     lineHeight: "1.3",
                     maxWidth: "550px",
+                    outline: "none",
+                    border: "none",
+                    padding: "0"
                   }}
                 >
                   {disclaimerText}

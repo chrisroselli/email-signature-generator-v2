@@ -289,7 +289,7 @@ export default function SignatureGenerator() {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 onKeyDown={handleAlphabeticKeyDown}
-                className="border-[#47403d]/20 focus-visible:ring-primary"
+                className="border-[#47403d]/20 focus-visible:ring-primary outline-none"
               />
             </div>
 
@@ -303,7 +303,7 @@ export default function SignatureGenerator() {
                 value={formData.jobTitle}
                 onChange={handleInputChange}
                 onKeyDown={handleAlphabeticKeyDown}
-                className="border-[#47403d]/20 focus-visible:ring-primary"
+                className="border-[#47403d]/20 focus-visible:ring-primary outline-none"
               />
             </div>
 
@@ -330,7 +330,7 @@ export default function SignatureGenerator() {
                 type="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="border-[#47403d]/20 focus-visible:ring-primary"
+                className="border-[#47403d]/20 focus-visible:ring-primary outline-none"
               />
             </div>
 
@@ -343,7 +343,7 @@ export default function SignatureGenerator() {
                 name="website"
                 value={formData.website}
                 onChange={handleInputChange}
-                className="border-[#47403d]/20 focus-visible:ring-primary"
+                className="border-[#47403d]/20 focus-visible:ring-primary outline-none"
               />
             </div>
 
@@ -372,8 +372,8 @@ export default function SignatureGenerator() {
                   maxLength={7}
                   className={`${
                     isColorValid
-                      ? "border-[#47403d]/20 focus-visible:ring-primary"
-                      : "border-red-500 focus-visible:ring-red-500"
+                      ? "border-[#47403d]/20 focus-visible:ring-primary outline-none"
+                      : "border-red-500 focus-visible:ring-red-500 outline-none"
                   }`}
                   aria-invalid={!isColorValid}
                 />
