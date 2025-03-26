@@ -48,11 +48,21 @@ export default function SignatureGenerator() {
 
   // Updated X icon URL to a more reliable source
   const [socialIcons, setSocialIcons] = useState({
-    x: "https://cdn-icons-png.flaticon.com/512/5969/5969020.png",
-    facebook: "https://cdn-icons-png.flaticon.com/512/174/174848.png",
-    instagram: "https://cdn-icons-png.flaticon.com/512/2111/2111463.png",
-    google: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png",
+    x: "",
+    facebook: "",
+    instagram: "",
+    google: "",
   })
+
+  // Load social icons on client side only
+  useEffect(() => {
+    setSocialIcons({
+      x: "https://cdn-icons-png.flaticon.com/512/5969/5969020.png",
+      facebook: "https://cdn-icons-png.flaticon.com/512/174/174848.png",
+      instagram: "https://cdn-icons-png.flaticon.com/512/2111/2111463.png",
+      google: "https://cdn-icons-png.flaticon.com/512/2991/2991148.png",
+    })
+  }, [])
 
   // Validate color on component mount and when textColor changes
   useEffect(() => {
